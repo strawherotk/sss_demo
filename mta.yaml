@@ -1,0 +1,83 @@
+_schema-version: '3.2'
+ID: mds-ui5
+version: 0.0.1
+parameters:
+  deploy_mode: html5-repo
+modules:
+  - name: mds-app-router
+    type: approuter.nodejs
+    path: app-router
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+      routes:
+        - route: ${space}-mds-app.cfapps.eu10.hana.ondemand.com
+    requires:
+      - name: mds-html5-repo-runtime
+      - name: mds-node-api
+        group: destinations
+        properties:
+          name: mds-node-api
+          url: '~{url}'
+          forwardAuthToken: true
+      - name: ui5_dest
+        group: destinations
+        properties:
+          name: ui5_dest
+          url: 'https://sapui5.hana.ondemand.com'
+      - name: mds_ui5_xsuaa
+  - name: mds-ui5-deployer
+    type: com.sap.html5.application-content
+    path: ui5deployer
+    requires:
+      - name: mds-ui5-repo-host
+    build-parameters:
+      requires:
+        - name: mdsui5
+          artifacts:
+            - mdsui5.zip
+          target-path: resources/
+  - name: mdsui5
+    type: html5
+    path: mds-ui5
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - 'npm run build:cf'
+      supported-platforms: []
+  - name: mds-node-service
+    type: nodejs
+    path: mds-node-service
+    provides:
+      - name: mds-node-api
+        properties:
+          url: '${default-url}'
+    properties:
+      UAA_SERVICE_NAME: mds_ui5_xsuaa
+    requires:
+      - name: mds_ui5_xsuaa      
+resources:
+  - name: mds-ui5-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-name: mds-ui5-html5-srv
+      service-plan: app-host
+  - name: mds-html5-repo-runtime
+    parameters:
+      service-plan: app-runtime
+      service: html5-apps-repo
+    type: org.cloudfoundry.managed-service
+  - name: mds_ui5_xsuaa
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+    type: org.cloudfoundry.managed-service
+  - name: ui5_dest
+    parameters:
+        service-plan: lite
+        service: destination
+    type: org.cloudfoundry.managed-service

@@ -1,0 +1,35 @@
+<mvc:View
+    controllerName="mdsui5.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}" showHeader="true">
+                    <customHeader>
+                        <Bar>
+                            <contentLeft>
+                                <Text id="headerName" text="Welcome {/family_name} {/given_name}" />	
+                            </contentLeft>
+                            <contentRight>
+                                <Button id="logout" text="Logout" press="onLogout" />                                
+                            </contentRight>
+                        </Bar>
+		            </customHeader>
+					<content>
+                        <!-- <Link text="Logout" target="_self" href="../mds/logout" /> -->
+                        <l:VerticalLayout width="100%">
+                            <l:content>
+                                <core:Fragment fragmentName="mdsui5.view.fragment.UserInfo" type="XML" />                               
+                            </l:content>
+					</l:VerticalLayout>
+                    </content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

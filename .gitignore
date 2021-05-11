@@ -1,0 +1,6 @@
+/mta_archives/
+/node_modules/
+/resources/
+*/node_modules/*
+.vscode
+/ui5deployer/resources/
