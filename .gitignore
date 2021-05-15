@@ -4,3 +4,4 @@
 */node_modules/*
 .vscode
 /ui5deployer/resources/
+/Makefile_*

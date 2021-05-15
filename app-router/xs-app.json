@@ -5,17 +5,18 @@
     "logoutPage": "/"
   },
   "routes": [{
+      "source": "^/resources/(.*)$",
+      "target": "/resources/$1",
+      "destination": "ui5_dest",
+      "authenticationType": "none"
+    }, {
+      "source": "^/mdmbp-svc/(.*)$",
+      "target": "/$1",
+      "destination": "mdmbp-svc",
+      "authenticationType": "xsuaa"
+    }, {
       "source": "^/(.*)$",
       "target": "$1",
-      "destination": "mds-node-api"      
-    }, {
-        "source":"^(.*)",
-        "target":"mdsui5/$1",
-        "service":"html5-apps-repo-rt"    
-    }, {
-        "source": "^/resources/(.*)$",
-        "target": "/resources/$1",
-        "destination": "ui5_dest",
-        "authenticationType": "none"
+      "destination": "mds-node-api"
     }]
 }

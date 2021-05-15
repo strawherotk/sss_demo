@@ -4,18 +4,21 @@
   "logout": {
     "logoutEndpoint": "/mds/logout"
   },
-  "routes": [
-    {
+  "routes": [{
+      "source": "^/resources/(.*)$",
+      "target": "/resources/$1",
+      "destination": "ui5_dest",
+      "authenticationType": "none"
+    }, {
+      "source": "^/mdmbp-svc/(.*)$",
+      "target": "/$1",
+      "destination": "mdmbp-svc",
+      "authenticationType": "xsuaa"
+    }, {
       "source": "^(.*)$",
       "target": "$1",
       "service": "html5-apps-repo-rt",
       "authenticationType": "xsuaa"
-    },
-    {
-        "source": "^/resources/(.*)$",
-        "target": "/resources/$1",
-        "destination": "ui5_dest",
-        "authenticationType": "none"
     }
   ]
 }

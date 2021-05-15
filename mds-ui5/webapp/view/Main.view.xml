@@ -26,7 +26,59 @@
                             <l:content>
                                 <core:Fragment fragmentName="mdsui5.view.fragment.UserInfo" type="XML" />                               
                             </l:content>
-					</l:VerticalLayout>
+					    </l:VerticalLayout>
+                        <Table id="IdTableProducts" items="{Products>/items}" mode="None" width="auto"
+                            growing="true" growingThreshold="10">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="Showing items on Hana Database" level="H2"/>
+                                    <ToolbarSpacer/>
+                                    <Button id="btJEPDeleteItems" icon="sap-icon://create" tooltip="Create a records" press=".createDummyProduct"/>
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false" width="25%"><Text text="ID"/></Column>
+                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Name"/></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem >
+                                    <cells>
+                                        <Text text="{Products>ID}"/>
+                                        <Text text="{Products>NAME}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+
+                        <Table id="BusinessPartner" items="{BusinessParners>/results}" mode="None" width="auto"
+                            growing="true" growingThreshold="10">
+                            <headerToolbar>
+                                <OverflowToolbar>
+                                    <Title text="Showing items on MDM" level="H2"/>
+                                    <ToolbarSpacer/>
+                                </OverflowToolbar>
+                            </headerToolbar>
+                            <columns>
+                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="ID"/></Column>
+                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Name"/></Column>
+                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Business Partner"/></Column>
+                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Catergory"/></Column>
+                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Authorization Group"/></Column>
+                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Last change by"/></Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem >
+                                    <cells>
+                                        <Text text="{BusinessParners>Id}"/>
+                                        <Text text="{BusinessParners>FullName}"/>
+                                        <Text text="{BusinessParners>BusinessPartner}"/>
+                                        <Text text="{BusinessParners>Category}"/>
+                                        <Text text="{BusinessParners>AuthorizationGroup}"/>
+                                        <Text text="{BusinessParners>LastChangedByUser}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
                     </content>
 				</Page>
 			</pages>

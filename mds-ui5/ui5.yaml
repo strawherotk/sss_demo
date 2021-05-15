@@ -12,6 +12,9 @@ server:
       backend:
       - path: /sap/opu/odata
         url: http://localhost
+      mdmbp-svc:
+      - path: /odata/v2/API_BUSINESS_PARTNER
+        url: https://mdmbp-production-service.cfapps.eu10.hana.ondemand.com
       ui5:
         path: 
         - /resources

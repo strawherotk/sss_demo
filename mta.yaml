@@ -21,10 +21,6 @@ modules:
           url: '~{url}'
           forwardAuthToken: true
       - name: ui5_dest
-        group: destinations
-        properties:
-          name: ui5_dest
-          url: 'https://sapui5.hana.ondemand.com'
       - name: mds_ui5_xsuaa
   - name: mds-ui5-deployer
     type: com.sap.html5.application-content
@@ -57,7 +53,8 @@ modules:
     properties:
       UAA_SERVICE_NAME: mds_ui5_xsuaa
     requires:
-      - name: mds_ui5_xsuaa      
+      - name: mds_ui5_xsuaa
+      - name: ui5_dest      
 resources:
   - name: mds-ui5-repo-host
     type: org.cloudfoundry.managed-service
