@@ -6,12 +6,12 @@
 
 const dbHandler = require('./controllers/DataLayer/db-interactions');
 
+
 module.exports = {
-  getProducts(req, res) {
-    dbHandler.getAllRecords('Products').then(results => res.send(results), error => res.status(500).send({
-      type: 'Error',
-      message: 'Error when get products',
-      details: error 
-    }));
+  getProducts: (req, res) => {
+    dbHandler.getAllRecords(res, 'Products');
+  },
+  createProduct: (req, res, data) => {
+    dbHandler.createRecords('Products', data, res);
   }
 }

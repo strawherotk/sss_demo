@@ -34,8 +34,9 @@ app.get('/productData', (req, res, next) => {
   api.getProducts(req, res);
 });
 
-app.post('/product', (req, res, next) => {
-  res.send('Hihi');
+app.put('/product', (req, res, next) => {
+  const data = req.body;
+  api.createProduct(req, res, data);
 });
 
 app.get('/user', (req, res, next) => {
@@ -61,7 +62,11 @@ app.get('/user-info', (req, res, next) => {
 });
 
 app.get('/business-partner-info', (req, res, next) => {
-  mdsAPI.getBusinessPartnerInfo(req, res).then(() => console.log('req done'));
+  mdsAPI.getBusinessPartnerInfo(req, res); // Please handle the call and logic inside api-main.js. This was made to testing PoC only
+});
+
+app.put('/BusinessPartner', (req, res, next) => {
+  mdsAPI.createOrganization(req, res); // Please handle the call and logic inside api-main.js. This was made to testing PoC only
 });
 
 app.listen(port, () => {

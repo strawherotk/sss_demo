@@ -1,85 +1,85 @@
 <mvc:View
-    controllerName="mdsui5.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc"
-    displayBlock="true"
-    xmlns="sap.m"
-    xmlns:l="sap.ui.layout"
-    xmlns:core="sap.ui.core"
->
+  controllerName="mdsui5.controller.Main"
+  xmlns:mvc="sap.ui.core.mvc"
+  displayBlock="true"
+  xmlns="sap.m"
+  xmlns:l="sap.ui.layout"
+  xmlns:core="sap.ui.core">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}" showHeader="true">
-                    <customHeader>
-                        <Bar>
-                            <contentLeft>
-                                <Text id="headerName" text="Welcome {/family_name} {/given_name}" />	
-                            </contentLeft>
-                            <contentRight>
-                                <Button id="logout" text="Logout" press="onLogout" />                                
-                            </contentRight>
-                        </Bar>
-		            </customHeader>
+          <customHeader>
+            <Bar>
+              <contentLeft>
+                <Text id="headerName" text="Welcome {/family_name} {/given_name}" />	
+              </contentLeft>
+              <contentRight>
+                <Button id="logout" text="Logout" press="onLogout" />                                
+              </contentRight>
+            </Bar>
+          </customHeader>
 					<content>
-                        <!-- <Link text="Logout" target="_self" href="../mds/logout" /> -->
-                        <l:VerticalLayout width="100%">
-                            <l:content>
-                                <core:Fragment fragmentName="mdsui5.view.fragment.UserInfo" type="XML" />                               
-                            </l:content>
-					    </l:VerticalLayout>
-                        <Table id="IdTableProducts" items="{Products>/items}" mode="None" width="auto"
-                            growing="true" growingThreshold="10">
-                            <headerToolbar>
-                                <OverflowToolbar>
-                                    <Title text="Showing items on Hana Database" level="H2"/>
-                                    <ToolbarSpacer/>
-                                    <Button id="btJEPDeleteItems" icon="sap-icon://create" tooltip="Create a records" press=".createDummyProduct"/>
-                                </OverflowToolbar>
-                            </headerToolbar>
-                            <columns>
-                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false" width="25%"><Text text="ID"/></Column>
-                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Name"/></Column>
-                            </columns>
-                            <items>
-                                <ColumnListItem >
-                                    <cells>
-                                        <Text text="{Products>ID}"/>
-                                        <Text text="{Products>NAME}"/>
-                                    </cells>
-                                </ColumnListItem>
-                            </items>
-                        </Table>
+            <!-- <Link text="Logout" target="_self" href="../mds/logout" /> -->
+            <l:VerticalLayout width="100%">
+              <l:content>
+                <core:Fragment fragmentName="mdsui5.view.fragment.UserInfo" type="XML" />                               
+              </l:content>
+            </l:VerticalLayout>
+              <Table id="IdTableProducts" items="{Products>/items}" mode="None" width="auto"
+                growing="true" growingThreshold="10">
+                <headerToolbar>
+                  <OverflowToolbar>
+                    <Title text="Showing items on Hana Database" level="H2"/>
+                    <ToolbarSpacer/>
+                    <Button id="btnCreateDummy" icon="sap-icon://create" tooltip="Create a records" press=".createDummyProduct"/>
+                  </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                  <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false" width="25%"><Text text="ID"/></Column>
+                  <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Name"/></Column>
+                </columns>
+                  <items>
+                    <ColumnListItem >
+                      <cells>
+                        <Text text="{Products>ID}"/>
+                        <Text text="{Products>NAME}"/>
+                      </cells>
+                    </ColumnListItem>
+                  </items>
+              </Table>
 
-                        <Table id="BusinessPartner" items="{BusinessParners>/results}" mode="None" width="auto"
-                            growing="true" growingThreshold="10">
-                            <headerToolbar>
-                                <OverflowToolbar>
-                                    <Title text="Showing items on MDM" level="H2"/>
-                                    <ToolbarSpacer/>
-                                </OverflowToolbar>
-                            </headerToolbar>
-                            <columns>
-                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="ID"/></Column>
-                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Name"/></Column>
-                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Business Partner"/></Column>
-                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Catergory"/></Column>
-                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Authorization Group"/></Column>
-                                <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Last change by"/></Column>
-                            </columns>
-                            <items>
-                                <ColumnListItem >
-                                    <cells>
-                                        <Text text="{BusinessParners>Id}"/>
-                                        <Text text="{BusinessParners>FullName}"/>
-                                        <Text text="{BusinessParners>BusinessPartner}"/>
-                                        <Text text="{BusinessParners>Category}"/>
-                                        <Text text="{BusinessParners>AuthorizationGroup}"/>
-                                        <Text text="{BusinessParners>LastChangedByUser}"/>
-                                    </cells>
-                                </ColumnListItem>
-                            </items>
-                        </Table>
-                    </content>
+              <Table id="BusinessPartner" items="{BusinessParners>/results}" mode="None" width="auto"
+                growing="true" growingThreshold="10">
+                <headerToolbar>
+                  <OverflowToolbar>
+                    <Title text="Showing items on MDMBP" level="H2"/>
+                    <ToolbarSpacer/>
+                    <Button id="btnCreateDummyORG" icon="sap-icon://create" tooltip="Create an Organization on MDMBP" press=".createOrganization"/>
+                  </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                  <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="ID"/></Column>
+                  <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Name"/></Column>
+                  <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Business Partner"/></Column>
+                  <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Catergory"/></Column>
+                  <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Authorization Group"/></Column>
+                  <Column minScreenWidth="Tablet" hAlign="Center" demandPopin="false"><Text text="Last change by"/></Column>
+                </columns>
+                <items>
+                  <ColumnListItem >
+                    <cells>
+                      <Text text="{BusinessParners>Id}"/>
+                      <Text text="{BusinessParners>FullName}"/>
+                      <Text text="{BusinessParners>BusinessPartner}"/>
+                      <Text text="{BusinessParners>Category}"/>
+                      <Text text="{BusinessParners>AuthorizationGroup}"/>
+                      <Text text="{BusinessParners>LastChangedByUser}"/>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+          </content>
 				</Page>
 			</pages>
 		</App>
